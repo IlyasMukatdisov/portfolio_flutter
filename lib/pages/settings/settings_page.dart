@@ -28,33 +28,35 @@ class SettingsPage extends StatelessWidget {
     Dimensions.context = context;
 
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          elevation: 0,
-          iconTheme: IconThemeData(color: AppColors.red),
-          title: const AppBarText(text: "Settings"),
-        ),
-        drawer: const CustomDrawer(),
-        body: Container(
-            height: double.maxFinite,
-            width: double.maxFinite,
-            padding: EdgeInsets.all(Dimensions.height20),
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Wrap(
-                    direction: Axis.horizontal,
-                    crossAxisAlignment: WrapCrossAlignment.center,
+      child: Consumer<ThemeProvider>(
+        builder: (context, provider, child) {
+          Color accent = provider.accent;
+          
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              elevation: 0,
+              iconTheme: IconThemeData(color: accent),
+              title: const AppBarText(text: "Settings"),
+            ),
+            drawer: const CustomDrawer(),
+            body: Container(
+                height: double.maxFinite,
+                width: double.maxFinite,
+                padding: EdgeInsets.all(Dimensions.height20),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("UI Mode: "),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Consumer<ThemeProvider>(
-                        builder: (context, provider, child) {
-                          return DropdownButton<String>(
+                      Wrap(
+                        direction: Axis.horizontal,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        children: [
+                          Text("UI Mode: "),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          DropdownButton<String>(
                               value: provider.currentTheme,
                               items: [
                                 DropdownMenuItem<String>(
@@ -85,17 +87,13 @@ class SettingsPage extends StatelessWidget {
                               onChanged: (String? value) {
                                 provider.changeTheme(
                                     value ?? Constants.UI_MODE_SYSTEM);
-                              });
-                        },
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: Dimensions.height20,
-                  ),
-                  Consumer<ThemeProvider>(
-                    builder: (context, provider, child) {
-                      return Wrap(
+                              }),
+                        ],
+                      ),
+                      SizedBox(
+                        height: Dimensions.height20,
+                      ),
+                      Wrap(
                         direction: Axis.horizontal,
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
@@ -176,12 +174,12 @@ class SettingsPage extends StatelessWidget {
                             ),
                           ),
                         ],
-                      );
-                    },
-                  )
-                ],
-              ),
-            )),
+                      )
+                    ],
+                  ),
+                )),
+          );
+        },
       ),
     );
   }

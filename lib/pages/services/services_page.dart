@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:portfolio_flutter/provider/theme_provider.dart';
 import 'package:portfolio_flutter/utils/app_colors.dart';
 import 'package:portfolio_flutter/utils/dimensions.dart';
 import 'package:portfolio_flutter/widgets/app_bar_text.dart';
 import 'package:portfolio_flutter/widgets/custom_drawer.dart';
 import 'package:portfolio_flutter/widgets/service_card.dart';
+import 'package:provider/provider.dart';
 
 class ServicesPage extends StatelessWidget {
   const ServicesPage({Key? key}) : super(key: key);
@@ -23,45 +25,51 @@ class ServicesPage extends StatelessWidget {
 
     Dimensions.context = context;
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          elevation: 0,
-          iconTheme: IconThemeData(color: AppColors.red),
-          title: const AppBarText(text: "Services"),
-        ),
-        drawer: const CustomDrawer(),
-        body: Container(
-            height: double.maxFinite,
-            width: double.maxFinite,
-            padding: EdgeInsets.all(Dimensions.height20),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  ServiceCard(
-                      icon: Icons.phone_android,
-                      header: "Android Native App",
-                      description: "Create Android Native Apps",
-                      iconColor: Colors.red),
-                  SizedBox(
-                    height: Dimensions.height30,
+      child: Consumer<ThemeProvider>(
+        builder: (context, provider, child) {
+          Color accent = provider.accent;
+          
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              elevation: 0,
+              iconTheme: IconThemeData(color: accent),
+              title: const AppBarText(text: "Services"),
+            ),
+            drawer: const CustomDrawer(),
+            body: Container(
+                height: double.maxFinite,
+                width: double.maxFinite,
+                padding: EdgeInsets.all(Dimensions.height20),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      ServiceCard(
+                          icon: Icons.phone_android,
+                          header: "Android Native App",
+                          description: "Create Android Native Apps",
+                          iconColor: accent),
+                      SizedBox(
+                        height: Dimensions.height30,
+                      ),
+                      ServiceCard(
+                          icon: Icons.laptop,
+                          header: "Flutter App",
+                          description: "Create Flutter Apps",
+                          iconColor: accent),
+                      SizedBox(
+                        height: Dimensions.height30,
+                      ),
+                      ServiceCard(
+                          icon: Icons.web_asset,
+                          header: "Simple Website",
+                          description: "Create Simple Website",
+                          iconColor: accent),
+                    ],
                   ),
-                  ServiceCard(
-                      icon: Icons.laptop,
-                      header: "Flutter App",
-                      description: "Create Flutter Apps",
-                      iconColor: Colors.red),
-                  SizedBox(
-                    height: Dimensions.height30,
-                  ),
-                  ServiceCard(
-                      icon: Icons.web_asset,
-                      header: "Simple Website",
-                      description: "Create Simple Website",
-                      iconColor: Colors.red),
-                ],
-              ),
-            )),
+                )),
+          );  
+        },
       ),
     );
   }
