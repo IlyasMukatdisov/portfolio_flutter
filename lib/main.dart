@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:portfolio_flutter/pages/home/home_page.dart';
+import 'package:portfolio_flutter/provider/theme_provider.dart';
+import 'package:provider/provider.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-        statusBarIconBrightness: Brightness.dark),
+      statusBarIconBrightness: Brightness.light,
+    ),
   );
 
-  runApp(const MyApp());
+  /*SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+  SystemChrome.setSystemUIChangeCallback((systemOverlaysAreVisible) async {
+    await Future.delayed(const Duration(seconds: 3));
+    SystemChrome.restoreSystemUIOverlays();
+  });*/
+
+  runApp(
+    ChangeNotifierProvider<ThemeProvider>(
+      create: (_) => ThemeProvider()..initialize(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,13 +31,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage(),
-    );
+    return Consumer<ThemeProvider>(builder: (context, provider, child) {
+      return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          themeMode: provider.themeMode,
+          theme: MyTheme.lightTheme,
+          darkTheme: MyTheme.darkTheme,
+          home: const HomePage());
+    });
   }
 }

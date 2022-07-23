@@ -10,6 +10,7 @@ class Dimensions {
   static double height20 = height / (844 / 20);
   static double height25 = height / (844 / 25);
   static double height30 = height / (844 / 30);
+  static double height200 = height / (844 / 200);
   static double width10 = width / (844 / 10);
   static double width20 = width / (844 / 20);
   static double width100 = width / (844 / 100);

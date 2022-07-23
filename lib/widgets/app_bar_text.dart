@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio_flutter/utils/app_colors.dart';
 
 class AppBarText extends StatelessWidget {
   final String text;
@@ -17,9 +15,8 @@ class AppBarText extends StatelessWidget {
       children: [
         Text(
           text,
-          style: GoogleFonts.poppins(
-              color: AppColors.text900,
-          ),
+          style:
+              TextStyle(color: Theme.of(context).textTheme.titleLarge?.color),
         ),
       ],
     );
