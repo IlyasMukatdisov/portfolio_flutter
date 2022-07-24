@@ -5,12 +5,6 @@ import 'package:portfolio_flutter/provider/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarIconBrightness: Brightness.light,
-    ),
-  );
 
   /*SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
   SystemChrome.setSystemUIChangeCallback((systemOverlaysAreVisible) async {
@@ -31,7 +25,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ThemeProvider>(builder: (context, provider, child) {
+    return Consumer<ThemeProvider>(builder: (contextP, provider, child) {
       return MaterialApp(
           debugShowCheckedModeBanner: false,
           themeMode: provider.themeMode,

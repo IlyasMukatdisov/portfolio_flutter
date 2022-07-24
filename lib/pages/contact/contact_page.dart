@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_flutter/provider/theme_provider.dart';
-import 'package:portfolio_flutter/utils/app_colors.dart';
 import 'package:portfolio_flutter/utils/dimensions.dart';
 import 'package:portfolio_flutter/widgets/app_bar_text.dart';
 import 'package:portfolio_flutter/widgets/contact_item.dart';
@@ -21,15 +20,16 @@ class ContactPage extends StatelessWidget {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
           statusBarColor: isDarkMode == true ? Colors.black : Colors.white,
-          statusBarIconBrightness: isDarkMode == true ? Brightness.light : Brightness.dark),
+          statusBarIconBrightness:
+              isDarkMode == true ? Brightness.light : Brightness.dark),
     );
 
-    Dimensions.context = context;
+    Dimensions dimensions = Dimensions(context: context);
     return SafeArea(
       child: Consumer<ThemeProvider>(
-        builder: (context, provider, child) {
+        builder: (contextP, provider, child) {
           Color accent = provider.accent;
-          
+
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -39,7 +39,7 @@ class ContactPage extends StatelessWidget {
             ),
             drawer: const CustomDrawer(),
             body: Container(
-              padding: EdgeInsets.all(Dimensions.height20),
+              padding: EdgeInsets.all(dimensions.height20!),
               width: double.maxFinite,
               height: double.maxFinite,
               child: SingleChildScrollView(
@@ -48,22 +48,22 @@ class ContactPage extends StatelessWidget {
                     Text(
                       "Have you any questions?",
                       style: TextStyle(
-                          fontSize: Dimensions.height20,
+                          fontSize: dimensions.height20,
                           fontWeight: FontWeight.w600,
                           color: accent),
                     ),
                     SizedBox(
-                      height: Dimensions.height20,
+                      height: dimensions.height20,
                     ),
                     Text(
                       "I'M AT YOUR SERVICES",
                       style: GoogleFonts.poppins(
-                          fontSize: Dimensions.height10 * 1.5,
+                          fontSize: dimensions.height10! * 1.5,
                           fontWeight: FontWeight.w600,
                           color: Theme.of(context).textTheme.subtitle1?.color),
                     ),
                     SizedBox(
-                      height: Dimensions.height30,
+                      height: dimensions.height30,
                     ),
                     ContactItem(
                         icon: Icons.phone,
@@ -71,7 +71,7 @@ class ContactPage extends StatelessWidget {
                         header: "Call Me On",
                         value: "+998946235947"),
                     SizedBox(
-                      height: Dimensions.height30,
+                      height: dimensions.height30,
                     ),
                     ContactItem(
                         icon: Icons.telegram,
@@ -79,7 +79,7 @@ class ContactPage extends StatelessWidget {
                         header: "Write Me On Telegram",
                         value: "https://t.me/MainActivityDotKt"),
                     SizedBox(
-                      height: Dimensions.height30,
+                      height: dimensions.height30,
                     ),
                     ContactItem(
                         icon: Icons.mail,
@@ -87,7 +87,7 @@ class ContactPage extends StatelessWidget {
                         header: "Write Me On E-Mail",
                         value: "mukatdisovilyas@gmail.com"),
                     SizedBox(
-                      height: Dimensions.height30,
+                      height: dimensions.height30,
                     ),
                     ContactItem(
                         icon: Icons.pending_rounded,
@@ -95,27 +95,27 @@ class ContactPage extends StatelessWidget {
                         header: "Check My Projects",
                         value: "https://github.com/IlyasMukatdisov"),
                     SizedBox(
-                      height: Dimensions.height30,
+                      height: dimensions.height30,
                     ),
                     Text(
                       "Send me an Email",
                       style: GoogleFonts.poppins(
-                          fontSize: Dimensions.height20,
+                          fontSize: dimensions.height20,
                           fontWeight: FontWeight.w600,
                           color: accent),
                     ),
                     SizedBox(
-                      height: Dimensions.height20,
+                      height: dimensions.height20,
                     ),
                     Text(
                       "I'LL TRY TO RESPOND AS FAST AS POSSIBLE",
                       style: GoogleFonts.poppins(
-                          fontSize: Dimensions.height10 * 1.5,
+                          fontSize: dimensions.height10! * 1.5,
                           fontWeight: FontWeight.w600,
                           color: Theme.of(context).textTheme.subtitle1?.color),
                     ),
                     SizedBox(
-                      height: Dimensions.height20,
+                      height: dimensions.height20,
                     ),
                     TextField(
                       decoration: InputDecoration(
@@ -123,12 +123,13 @@ class ContactPage extends StatelessWidget {
                         border: OutlineInputBorder(
                           borderSide: BorderSide(
                               color: Colors.grey.withOpacity(0.2), width: 1),
-                          borderRadius: BorderRadius.circular(Dimensions.height20),
+                          borderRadius:
+                              BorderRadius.circular(dimensions.height20!),
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: Dimensions.height20,
+                      height: dimensions.height20,
                     ),
                     TextField(
                       keyboardType: TextInputType.multiline,
@@ -137,12 +138,13 @@ class ContactPage extends StatelessWidget {
                         border: OutlineInputBorder(
                           borderSide: BorderSide(
                               color: Colors.grey.withOpacity(0.2), width: 1),
-                          borderRadius: BorderRadius.circular(Dimensions.height20),
+                          borderRadius:
+                              BorderRadius.circular(dimensions.height20!),
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: Dimensions.height20,
+                      height: dimensions.height20,
                     ),
                     Container(
                         width: double.maxFinite,

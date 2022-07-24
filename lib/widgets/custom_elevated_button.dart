@@ -17,23 +17,23 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    Dimensions.context = context;
+    Dimensions dimensions = Dimensions(context: context);
     return Consumer<ThemeProvider>(
-      builder: (context, provider, child) {
+      builder: (contextP, provider, child) {
         Color accent = provider.accent;
         return ElevatedButton(
             onPressed: onPressed,
             style: ElevatedButton.styleFrom(
                 primary: accent,
                 padding: EdgeInsets.symmetric(
-                    horizontal: Dimensions.width20 * 2,
-                    vertical: Dimensions.width20),
+                    horizontal: dimensions.width20! * 2,
+                    vertical: dimensions.width20!),
                 shape: RoundedRectangleBorder(
                     borderRadius:
-                        BorderRadius.circular(Dimensions.height20 * 2))),
+                        BorderRadius.circular(dimensions.height20! * 2))),
             child: Text(text,
                 style: TextStyle(
-                    fontSize: Dimensions.height10 * 1.6,
+                    fontSize: dimensions.height10! * 1.6,
                     fontWeight: FontWeight.w600,
                     color: Colors.white)));
       },

@@ -6,8 +6,6 @@ import 'package:portfolio_flutter/pages/portfolio/portfolio_page.dart';
 import 'package:portfolio_flutter/pages/services/services_page.dart';
 import 'package:portfolio_flutter/pages/settings/settings_page.dart';
 import 'package:portfolio_flutter/provider/theme_provider.dart';
-import 'package:portfolio_flutter/utils/app_colors.dart';
-import 'package:portfolio_flutter/utils/dimensions.dart';
 import 'package:portfolio_flutter/widgets/drawer_row.dart';
 import 'package:provider/provider.dart';
 
@@ -18,9 +16,8 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Dimensions.context = context;
     return Consumer<ThemeProvider>(
-      builder: (context, provider, child) {
+      builder: (contextP, provider, child) {
         Color accent = provider.accent;
         return Drawer(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,

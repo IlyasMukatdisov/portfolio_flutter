@@ -18,26 +18,27 @@ class ServiceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Dimensions dimensions = Dimensions(context: context);
     return Container(
       width: double.maxFinite,
-      height: Dimensions.height200,
+      height: dimensions.height200,
       decoration: BoxDecoration(
           border: Border.all(
             color: AppColors.black50,
           ),
-          borderRadius: BorderRadius.circular(Dimensions.height20)),
+          borderRadius: BorderRadius.circular(dimensions.height20!)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Icon(
             icon,
             color: iconColor,
-            size: Dimensions.height30 * 2,
+            size: dimensions.height30! * 2,
           ),
           Text(
             header,
             style: TextStyle(
-                fontSize: Dimensions.height20,
+                fontSize: dimensions.height20,
                 fontWeight: FontWeight.w600,
                 color: Theme.of(context).textTheme.titleLarge?.color),
           ),

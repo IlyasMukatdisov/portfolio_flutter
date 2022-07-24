@@ -16,9 +16,11 @@ class AboutPageItem extends StatelessWidget {
     var brightness = MediaQuery.of(context).platformBrightness;
     bool isDarkMode = brightness == Brightness.dark;
 
+    Dimensions dimensions = Dimensions(context: context);
+
     return Container(
       width: double.maxFinite,
-      padding: EdgeInsets.symmetric(vertical: Dimensions.height10),
+      padding: EdgeInsets.symmetric(vertical: dimensions.height10!),
       decoration: BoxDecoration(
           border: Border(
               bottom: BorderSide(
@@ -31,7 +33,7 @@ class AboutPageItem extends StatelessWidget {
         children: [
           Text(header,
               style: TextStyle(
-                  fontSize: Dimensions.height10 * 1.7,
+                  fontSize: dimensions.height10! * 1.7,
                   fontWeight: FontWeight.w600,
                   color: Theme.of(context).textTheme.headline5?.color)),
           Text(value,

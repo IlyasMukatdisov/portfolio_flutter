@@ -25,11 +25,11 @@ class SettingsPage extends StatelessWidget {
               isDarkMode == true ? Brightness.light : Brightness.dark),
     );
 
-    Dimensions.context = context;
+    Dimensions dimensions = Dimensions(context: context);
 
     return SafeArea(
       child: Consumer<ThemeProvider>(
-        builder: (context, provider, child) {
+        builder: (contextP, provider, child) {
           Color accent = provider.accent;
           
           return Scaffold(
@@ -43,7 +43,7 @@ class SettingsPage extends StatelessWidget {
             body: Container(
                 height: double.maxFinite,
                 width: double.maxFinite,
-                padding: EdgeInsets.all(Dimensions.height20),
+                padding: EdgeInsets.all(dimensions.height20!),
                 child: SingleChildScrollView(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,7 +91,7 @@ class SettingsPage extends StatelessWidget {
                         ],
                       ),
                       SizedBox(
-                        height: Dimensions.height20,
+                        height: dimensions.height20,
                       ),
                       Wrap(
                         direction: Axis.horizontal,
@@ -99,7 +99,7 @@ class SettingsPage extends StatelessWidget {
                         children: [
                           Text("Accent: "),
                           SizedBox(
-                            width: Dimensions.width20,
+                            width: dimensions.width20,
                           ),
                           GestureDetector(
                             onTap: () {
@@ -114,7 +114,7 @@ class SettingsPage extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            width: Dimensions.width20,
+                            width: dimensions.width20,
                           ),
                           GestureDetector(
                             onTap: () {
@@ -129,7 +129,7 @@ class SettingsPage extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            width: Dimensions.width20,
+                            width: dimensions.width20,
                           ),
                           GestureDetector(
                             onTap: () {
@@ -144,7 +144,7 @@ class SettingsPage extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            width: Dimensions.width20,
+                            width: dimensions.width20,
                           ),
                           GestureDetector(
                             onTap: () {
@@ -159,7 +159,7 @@ class SettingsPage extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            width: Dimensions.width20,
+                            width: dimensions.width20,
                           ),
                           GestureDetector(
                             onTap: () {

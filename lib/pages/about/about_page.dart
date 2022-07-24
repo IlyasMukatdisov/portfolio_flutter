@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:portfolio_flutter/pages/contact/contact_page.dart';
 import 'package:portfolio_flutter/provider/theme_provider.dart';
-import 'package:portfolio_flutter/utils/app_colors.dart';
 import 'package:portfolio_flutter/utils/constants.dart';
 import 'package:portfolio_flutter/utils/dimensions.dart';
 import 'package:portfolio_flutter/widgets/about_page_item.dart';
@@ -28,12 +28,12 @@ class AboutPage extends StatelessWidget {
               isDarkMode == true ? Brightness.light : Brightness.dark),
     );
 
-    Dimensions.context = context;
+    Dimensions dimensions = Dimensions(context: context);
     return SafeArea(
       child: Consumer<ThemeProvider>(
-        builder: (context, provider, child) {
+        builder: (contextP, provider, child) {
           Color accent = provider.accent;
-          
+
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -43,7 +43,7 @@ class AboutPage extends StatelessWidget {
             ),
             drawer: const CustomDrawer(),
             body: Container(
-              margin: EdgeInsets.all(Dimensions.height20),
+              margin: EdgeInsets.all(20),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,20 +52,23 @@ class AboutPage extends StatelessWidget {
                       text: TextSpan(
                           text: "${Constants.im}${Constants.name} and ",
                           style: TextStyle(
-                              fontSize: Dimensions.height25,
+                              fontSize: dimensions.height25,
                               fontWeight: FontWeight.w600,
-                              color: Theme.of(context).textTheme.titleLarge?.color),
+                              color: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge
+                                  ?.color),
                           children: [
                             TextSpan(
                                 text: Constants.job,
                                 style: TextStyle(
-                                    fontSize: Dimensions.height25,
+                                    fontSize: dimensions.height25,
                                     fontWeight: FontWeight.w600,
                                     color: accent))
                           ]),
                     ),
                     SizedBox(
-                      height: Dimensions.height20,
+                      height: dimensions.height20,
                     ),
                     Text(
                       Constants.aboutMeDescription,
@@ -75,9 +78,10 @@ class AboutPage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: Dimensions.height20,
+                      height: dimensions.height20,
                     ),
-                    const AboutPageItem(header: "Birthday :", value: "18 Jan 2001"),
+                    const AboutPageItem(
+                        header: "Birthday :", value: "18 Jan 2001"),
                     const AboutPageItem(header: "Age :", value: "21"),
                     const AboutPageItem(
                         header: "Website :",
@@ -86,26 +90,34 @@ class AboutPage extends StatelessWidget {
                         header: "Email :", value: "mukatdisovilyas@gmail.com"),
                     const AboutPageItem(
                         header: "Degree :", value: "Bachelor's 3 stage"),
-                    const AboutPageItem(header: "Phone :", value: "+998946235947"),
+                    const AboutPageItem(
+                        header: "Phone :", value: "+998946235947"),
                     const AboutPageItem(
                         header: "City :", value: "Tashkent, Uzbekistan"),
                     const AboutPageItem(
                         header: "Telegram :", value: "@MainActivityDotKt"),
                     SizedBox(
-                      height: Dimensions.height20 * 2,
+                      height: dimensions.height20! * 2,
                     ),
-                    CustomElevatedButton(onPressed: () {}, text: "Hire Me"),
+                    CustomElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const ContactPage()));
+                        },
+                        text: "Hire Me"),
                     SizedBox(
-                      height: Dimensions.height20 * 2,
+                      height: dimensions.height20! * 2,
                     ),
                     Text(
                       "Skills :",
                       style: TextStyle(
-                          fontSize: Dimensions.height20,
+                          fontSize: dimensions.height20,
                           fontWeight: FontWeight.w600),
                     ),
                     SizedBox(
-                      height: Dimensions.height20,
+                      height: dimensions.height20,
                     ),
                     const SkillItem(skillName: "Flutter", skillPercent: 0.25),
                     const SkillItem(skillName: "Dart", skillPercent: 0.75),
@@ -115,33 +127,33 @@ class AboutPage extends StatelessWidget {
                     Text(
                       "Education :",
                       style: TextStyle(
-                          fontSize: Dimensions.height20,
+                          fontSize: dimensions.height20,
                           color: Theme.of(context).textTheme.titleLarge?.color,
                           fontWeight: FontWeight.w600),
                     ),
                     SizedBox(
-                      height: Dimensions.height20,
+                      height: dimensions.height20,
                     ),
                     const EducationCard(),
                     SizedBox(
-                      height: Dimensions.height20,
+                      height: dimensions.height20,
                     ),
                     Text(
                       "Experience :",
                       style: TextStyle(
-                          fontSize: Dimensions.height20,
+                          fontSize: dimensions.height20,
                           color: Theme.of(context).textTheme.titleLarge?.color,
                           fontWeight: FontWeight.w600),
                     ),
                     SizedBox(
-                      height: Dimensions.height20,
+                      height: dimensions.height20,
                     ),
                     const ExperienceCard(),
                   ],
                 ),
               ),
             ),
-          ); 
+          );
         },
       ),
     );

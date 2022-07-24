@@ -17,25 +17,27 @@ class ContactItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Dimensions dimensions = Dimensions(context: context);
+
     return Column(
       children: [
         Icon(
           icon,
-          size: Dimensions.height20 * 2,
+          size: dimensions.height20! * 2,
           color: iconColor,
         ),
         SizedBox(
-          height: Dimensions.height10,
+          height: dimensions.height10,
         ),
         Text(
           header,
           style: TextStyle(
-              fontSize: Dimensions.height10 * 1.6,
+              fontSize: dimensions.height10! * 1.6,
               fontWeight: FontWeight.w600,
               color: Theme.of(context).textTheme.subtitle1?.color),
         ),
         SizedBox(
-          height: Dimensions.height10,
+          height: dimensions.height10,
         ),
         Text(
           value,

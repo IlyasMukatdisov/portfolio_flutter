@@ -20,9 +20,9 @@ class DrawerRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Dimensions.context = context;
+    Dimensions dimensions = Dimensions(context: context);
     return Consumer<ThemeProvider>(
-      builder: (BuildContext context, provider, Widget? child) {
+      builder: (BuildContext contextP, provider, Widget? child) {
         var theme = provider.currentTheme;
         bool isDarkMode = false;
         switch (theme) {
@@ -42,7 +42,7 @@ class DrawerRow extends StatelessWidget {
                 context, MaterialPageRoute(builder: (context) => toPage));
           },
           child: Container(
-            width: Dimensions.width100 * 2.3,
+            width: dimensions.width100! * 2.3,
             decoration: BoxDecoration(
               border: Border(
                   bottom: BorderSide(
@@ -51,7 +51,7 @@ class DrawerRow extends StatelessWidget {
                           ? Colors.white.withOpacity(0.5)
                           : Colors.black.withOpacity(0.2))),
             ),
-            margin: EdgeInsets.only(bottom: Dimensions.height20),
+            margin: EdgeInsets.only(bottom: dimensions.height20!),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -61,7 +61,7 @@ class DrawerRow extends StatelessWidget {
                   size: 24,
                 ),
                 SizedBox(
-                  width: Dimensions.width20,
+                  width: dimensions.width20,
                 ),
                 Text(text,
                     style: TextStyle(

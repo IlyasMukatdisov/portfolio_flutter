@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_flutter/provider/theme_provider.dart';
-import 'package:portfolio_flutter/utils/app_colors.dart';
 import 'package:portfolio_flutter/utils/dimensions.dart';
 import 'package:provider/provider.dart';
 
@@ -9,30 +8,30 @@ class ExperienceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Dimensions.context = context;
+    Dimensions dimensions = Dimensions(context: context);
     return Container(
-      width: Dimensions.width - 2 * Dimensions.height20,
-      /*padding: EdgeInsets.all(Dimensions.height20),*/
+      width: dimensions.width! - 2 * dimensions.height20!,
+      /*padding: EdgeInsets.all(dimensions.height20),*/
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
-        borderRadius: BorderRadius.circular(Dimensions.height20),
+        borderRadius: BorderRadius.circular(dimensions.height20!),
         /*boxShadow: [
             BoxShadow(
                 color: const Color(0xFFe8e8e8),
-                blurRadius: Dimensions.height10 / 2,
-                offset: Offset(0, Dimensions.height10 / 2)),
+                blurRadius: dimensions.height10 / 2,
+                offset: Offset(0, dimensions.height10 / 2)),
             BoxShadow(
                 color: const Color(0xFFe8e8e8),
-                blurRadius: Dimensions.height10 / 2,
-                offset: Offset(Dimensions.height10 / 2, 0)),
+                blurRadius: dimensions.height10 / 2,
+                offset: Offset(dimensions.height10 / 2, 0)),
             BoxShadow(
                 color: const Color(0xFFe8e8e8),
-                blurRadius: Dimensions.height10 / 2,
-                offset: Offset(0, -Dimensions.height10 / 2)),
+                blurRadius: dimensions.height10 / 2,
+                offset: Offset(0, -dimensions.height10 / 2)),
             BoxShadow(
                 color: const Color(0xFFe8e8e8),
-                blurRadius: Dimensions.height10 / 2,
-                offset: Offset(-Dimensions.height10 / 2, 0)),
+                blurRadius: dimensions.height10 / 2,
+                offset: Offset(-dimensions.height10 / 2, 0)),
 
           ]*/
       ),
@@ -68,69 +67,48 @@ class ExperienceCardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Dimensions dimensions = Dimensions(context: context);
     return Consumer<ThemeProvider>(
-      builder: (context, provider, child) {
+      builder: (contextP, provider, child) {
         Color accent = provider.accent;
-        
+
         return Row(
           children: [
-            Column(
-              children: [
-                Container(
-                  height: 20,
-                  width: 20,
-                  decoration: BoxDecoration(
-                      color: accent,
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                Container(
-                  width: 1,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    color: accent,
-                  ),
-                )
-              ],
-            ),
-            SizedBox(
-              width: Dimensions.width20,
-            ),
             Expanded(
-              child: Container(
-                height: 120,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.calendar_month,
-                          color: Colors.grey,
-                        ),
-                        SizedBox(
-                          width: Dimensions.width10,
-                        ),
-                        Text(date,
-                            style: TextStyle(
-                                fontWeight: FontWeight.normal,
-                                color:
-                                Theme.of(context).textTheme.bodyText1?.color))
-                      ],
-                    ),
-                    Text(profession,
-                        style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            color: Theme.of(context).textTheme.bodyText1?.color)),
-                    Text(workPlace,
-                        style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            color: Theme.of(context).textTheme.bodyText1?.color)),
-                    SizedBox(
-                      height: Dimensions.height10,
-                    )
-                  ],
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.calendar_month,
+                        color: accent,
+                      ),
+                      SizedBox(
+                        width: dimensions.width10,
+                      ),
+                      Text(date,
+                          style: TextStyle(
+                              fontWeight: FontWeight.normal,
+                              color:
+                                  Theme.of(context).textTheme.bodyText1?.color))
+                    ],
+                  ),
+                  SizedBox(height: dimensions.height10,),
+                  Text(profession,
+                      style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          color: Theme.of(context).textTheme.bodyText1?.color)),
+                  SizedBox(height: dimensions.height10,),
+                  Text(workPlace,
+                      style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          color: Theme.of(context).textTheme.bodyText1?.color)),
+                  SizedBox(
+                    height: dimensions.height10,
+                  )
+                ],
               ),
             )
           ],

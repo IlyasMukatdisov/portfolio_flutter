@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:portfolio_flutter/provider/theme_provider.dart';
-import 'package:portfolio_flutter/utils/app_colors.dart';
 import 'package:portfolio_flutter/utils/dimensions.dart';
 import 'package:portfolio_flutter/widgets/app_bar_text.dart';
 import 'package:portfolio_flutter/widgets/custom_drawer.dart';
@@ -23,12 +22,12 @@ class ServicesPage extends StatelessWidget {
               isDarkMode == true ? Brightness.light : Brightness.dark),
     );
 
-    Dimensions.context = context;
+    Dimensions dimensions = Dimensions(context: context);
     return SafeArea(
       child: Consumer<ThemeProvider>(
-        builder: (context, provider, child) {
+        builder: (contextP, provider, child) {
           Color accent = provider.accent;
-          
+
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -40,7 +39,7 @@ class ServicesPage extends StatelessWidget {
             body: Container(
                 height: double.maxFinite,
                 width: double.maxFinite,
-                padding: EdgeInsets.all(Dimensions.height20),
+                padding: EdgeInsets.all(dimensions.height20!),
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -50,7 +49,7 @@ class ServicesPage extends StatelessWidget {
                           description: "Create Android Native Apps",
                           iconColor: accent),
                       SizedBox(
-                        height: Dimensions.height30,
+                        height: dimensions.height30,
                       ),
                       ServiceCard(
                           icon: Icons.laptop,
@@ -58,7 +57,7 @@ class ServicesPage extends StatelessWidget {
                           description: "Create Flutter Apps",
                           iconColor: accent),
                       SizedBox(
-                        height: Dimensions.height30,
+                        height: dimensions.height30,
                       ),
                       ServiceCard(
                           icon: Icons.web_asset,
@@ -68,7 +67,7 @@ class ServicesPage extends StatelessWidget {
                     ],
                   ),
                 )),
-          );  
+          );
         },
       ),
     );

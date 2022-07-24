@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:portfolio_flutter/provider/theme_provider.dart';
-import 'package:portfolio_flutter/utils/app_colors.dart';
 import 'package:portfolio_flutter/utils/dimensions.dart';
 import 'package:portfolio_flutter/widgets/app_bar_text.dart';
 import 'package:portfolio_flutter/widgets/custom_drawer.dart';
@@ -22,12 +21,12 @@ class PortfolioPage extends StatelessWidget {
               isDarkMode == true ? Brightness.light : Brightness.dark),
     );
 
-    Dimensions.context = context;
+    Dimensions dimensions = Dimensions(context: context);
     return SafeArea(
       child: Consumer<ThemeProvider>(
-        builder: (context, provider, child) {
+        builder: (contextP, provider, child) {
           Color accent = provider.accent;
-          
+
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -37,7 +36,7 @@ class PortfolioPage extends StatelessWidget {
             ),
             drawer: const CustomDrawer(),
             body: Container(
-              padding: EdgeInsets.all(Dimensions.height20),
+              padding: EdgeInsets.all(dimensions.height20!),
               height: double.maxFinite,
               width: double.maxFinite,
               child: SingleChildScrollView(
@@ -47,20 +46,21 @@ class PortfolioPage extends StatelessWidget {
                     Text(
                       "My last projects: ",
                       style: TextStyle(
-                          fontSize: Dimensions.height20,
+                          fontSize: dimensions.height20,
                           fontWeight: FontWeight.normal,
                           color: Theme.of(context).textTheme.titleLarge?.color),
                     ),
                     SizedBox(
-                      height: Dimensions.height30,
+                      height: dimensions.height30,
                     ),
                     Image.asset("assets/images/portfolio/Easy Calculator.webp"),
                     SizedBox(
-                      height: Dimensions.height30,
+                      height: dimensions.height30,
                     ),
-                    Image.asset("assets/images/portfolio/Compose Calculator.webp"),
+                    Image.asset(
+                        "assets/images/portfolio/Compose Calculator.webp"),
                     SizedBox(
-                      height: Dimensions.height30,
+                      height: dimensions.height30,
                     ),
                     Image.asset("assets/images/portfolio/Movies.webp"),
                   ],
