@@ -34,7 +34,7 @@ class ContactItem extends StatelessWidget {
           style: TextStyle(
               fontSize: dimensions.height10! * 1.6,
               fontWeight: FontWeight.w600,
-              color: Theme.of(context).textTheme.subtitle1?.color),
+              color: Theme.of(context).textTheme.titleMedium?.color),
         ),
         SizedBox(
           height: dimensions.height10,
@@ -43,7 +43,7 @@ class ContactItem extends StatelessWidget {
           value,
           style: TextStyle(
               fontWeight: FontWeight.normal,
-              color: Theme.of(context).textTheme.bodyText1?.color),
+              color: Theme.of(context).textTheme.bodyLarge?.color),
         ),
       ],
     );

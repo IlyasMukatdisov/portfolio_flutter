@@ -46,7 +46,7 @@ class ServiceCard extends StatelessWidget {
             description,
             style: TextStyle(
                 fontWeight: FontWeight.normal,
-                color: Theme.of(context).textTheme.bodyText1?.color),
+                color: Theme.of(context).textTheme.bodyLarge?.color),
           ),
         ],
       ),

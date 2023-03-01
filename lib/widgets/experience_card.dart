@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio_flutter/provider/theme_provider.dart';
 import 'package:portfolio_flutter/utils/dimensions.dart';
-import 'package:provider/provider.dart';
 
 class ExperienceCard extends StatelessWidget {
   const ExperienceCard({Key? key}) : super(key: key);
@@ -53,7 +53,7 @@ class ExperienceCard extends StatelessWidget {
   }
 }
 
-class ExperienceCardItem extends StatelessWidget {
+class ExperienceCardItem extends ConsumerWidget {
   final String date;
   final String profession;
   final String workPlace;
@@ -66,54 +66,53 @@ class ExperienceCardItem extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     Dimensions dimensions = Dimensions(context: context);
-    return Consumer<ThemeProvider>(
-      builder: (contextP, provider, child) {
-        Color accent = provider.accent;
+    Color accent = ref.read(themeProvider.notifier).accent;
 
-        return Row(
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Row(
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
                 children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.calendar_month,
-                        color: accent,
-                      ),
-                      SizedBox(
-                        width: dimensions.width10,
-                      ),
-                      Text(date,
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              color:
-                                  Theme.of(context).textTheme.bodyText1?.color))
-                    ],
+                  Icon(
+                    Icons.calendar_month,
+                    color: accent,
                   ),
-                  SizedBox(height: dimensions.height10,),
-                  Text(profession,
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          color: Theme.of(context).textTheme.bodyText1?.color)),
-                  SizedBox(height: dimensions.height10,),
-                  Text(workPlace,
-                      style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          color: Theme.of(context).textTheme.bodyText1?.color)),
                   SizedBox(
-                    height: dimensions.height10,
-                  )
+                    width: dimensions.width10,
+                  ),
+                  Text(date,
+                      style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          color: Theme.of(context).textTheme.bodyLarge?.color))
                 ],
               ),
-            )
-          ],
-        );
-      },
+              SizedBox(
+                height: dimensions.height10,
+              ),
+              Text(profession,
+                  style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      color: Theme.of(context).textTheme.bodyLarge?.color)),
+              SizedBox(
+                height: dimensions.height10,
+              ),
+              Text(workPlace,
+                  style: TextStyle(
+                      fontWeight: FontWeight.normal,
+                      color: Theme.of(context).textTheme.bodyLarge?.color)),
+              SizedBox(
+                height: dimensions.height10,
+              )
+            ],
+          ),
+        )
+      ],
     );
   }
 }

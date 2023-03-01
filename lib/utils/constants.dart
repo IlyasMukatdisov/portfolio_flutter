@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 class Constants {
   static String hello = "Hello, my name is ";
   static String name = "Ilyas Mukatdisov";
@@ -12,6 +14,7 @@ class Constants {
       "Gradle. But I'm not going to stop there. There is still a lot of interesting things ahead. "
       "I really hope to gain experience in a team and benefit your company";
 
+  
   static const String UI_MODE_KEY = "ui_mode_key";
   static const String UI_MODE_DARK = "ui_mode_dark";
   static const String UI_MODE_LIGHT = "ui_mode_light";
@@ -23,5 +26,8 @@ class Constants {
   static const String ACCENT_GREEN = "accent_green";
   static const String ACCENT_BLUE = "accent_blue";
   static const String ACCENT_PURPLE = "accent_purple";
+
+  static const String CV_URL = "https://portfoliohosting-ad525.web.app/asset/files/Ilyas_Mukatdisov.pdf";
+  static const String EMAIL = "mukatdisovilyas@gmail.com";
 
 }

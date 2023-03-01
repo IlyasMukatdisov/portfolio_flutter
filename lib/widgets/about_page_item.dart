@@ -35,11 +35,11 @@ class AboutPageItem extends StatelessWidget {
               style: TextStyle(
                   fontSize: dimensions.height10! * 1.7,
                   fontWeight: FontWeight.w600,
-                  color: Theme.of(context).textTheme.headline5?.color)),
+                  color: Theme.of(context).textTheme.headlineSmall?.color)),
           Text(value,
               style: TextStyle(
                   fontWeight: FontWeight.normal,
-                  color: Theme.of(context).textTheme.bodyText1?.color)),
+                  color: Theme.of(context).textTheme.bodyLarge?.color)),
         ],
       ),
     );

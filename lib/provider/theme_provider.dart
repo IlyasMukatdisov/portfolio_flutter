@@ -2,14 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_flutter/utils/app_colors.dart';
 import 'package:portfolio_flutter/utils/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ThemeProvider extends ChangeNotifier {
-  String currentTheme = 'system';
+final themeProvider = NotifierProvider<ThemeNotifier, Map<String, String>>(
+  () => ThemeNotifier(),
+);
 
-  String currentAccent = 'red';
+class ThemeNotifier extends Notifier<Map<String, String>> {
+  ThemeNotifier() : super();
+
+  @override
+  Map<String, String> build() {
+    return {
+      Constants.UI_MODE_KEY: Constants.UI_MODE_SYSTEM,
+      Constants.ACCENT_KEY: Constants.ACCENT_RED
+    };
+  }
 
   ThemeMode get themeMode {
-    switch (currentTheme) {
+    switch (state[Constants.UI_MODE_KEY]) {
       case Constants.UI_MODE_LIGHT:
         return ThemeMode.light;
       case Constants.UI_MODE_DARK:
@@ -22,7 +33,7 @@ class ThemeProvider extends ChangeNotifier {
   }
 
   Color get accent {
-    switch (currentAccent) {
+    switch (state[Constants.ACCENT_KEY]) {
       case Constants.ACCENT_RED:
         return AppColors.red;
       case Constants.ACCENT_YELLOW:
@@ -39,30 +50,38 @@ class ThemeProvider extends ChangeNotifier {
   }
 
   void changeColors(String accent) async {
-    final SharedPreferences _pref = await SharedPreferences.getInstance();
+    final SharedPreferences pref = await SharedPreferences.getInstance();
 
-    await _pref.setString(Constants.ACCENT_KEY, accent);
+    await pref.setString(Constants.ACCENT_KEY, accent);
 
-    currentAccent = accent;
-    notifyListeners();
+    state = {
+      Constants.UI_MODE_KEY: state[Constants.UI_MODE_KEY]!,
+      Constants.ACCENT_KEY: accent,
+    };
   }
 
   void changeTheme(String theme) async {
-    final SharedPreferences _pref = await SharedPreferences.getInstance();
+    final SharedPreferences pref = await SharedPreferences.getInstance();
 
-    await _pref.setString(Constants.UI_MODE_KEY, theme);
+    await pref.setString(Constants.UI_MODE_KEY, theme);
 
-    currentTheme = theme;
-    notifyListeners();
+    state = {
+      Constants.UI_MODE_KEY: theme,
+      Constants.ACCENT_KEY: state[Constants.ACCENT_KEY]!,
+    };
   }
 
-  initialize() async {
-    final SharedPreferences _pref = await SharedPreferences.getInstance();
-    currentTheme =
-        _pref.getString(Constants.UI_MODE_KEY) ?? Constants.UI_MODE_SYSTEM;
-    currentAccent = _pref.getString(Constants.ACCENT_KEY) ?? Constants.ACCENT_RED;
+  void initialize() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    String theme =
+        pref.getString(Constants.UI_MODE_KEY) ?? Constants.UI_MODE_SYSTEM;
+    String accent =
+        pref.getString(Constants.ACCENT_KEY) ?? Constants.ACCENT_RED;
 
-    notifyListeners();
+    state = {
+      Constants.UI_MODE_KEY: theme,
+      Constants.ACCENT_KEY: accent,
+    };
   }
 }
 

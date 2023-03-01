@@ -1,74 +1,59 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio_flutter/provider/theme_provider.dart';
 import 'package:portfolio_flutter/utils/dimensions.dart';
+import 'package:portfolio_flutter/utils/utils.dart';
 import 'package:portfolio_flutter/widgets/app_bar_text.dart';
 import 'package:portfolio_flutter/widgets/custom_drawer.dart';
-import 'package:provider/provider.dart';
 
-class PortfolioPage extends StatelessWidget {
+class PortfolioPage extends ConsumerWidget {
   const PortfolioPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    var brightness = MediaQuery.of(context).platformBrightness;
-    bool isDarkMode = brightness == Brightness.dark;
-
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-          statusBarColor: isDarkMode == true ? Colors.black : Colors.white,
-          statusBarIconBrightness:
-              isDarkMode == true ? Brightness.light : Brightness.dark),
-    );
+  Widget build(BuildContext context, WidgetRef ref) {
+    Utils.setUiOverlay(context);
 
     Dimensions dimensions = Dimensions(context: context);
-    return SafeArea(
-      child: Consumer<ThemeProvider>(
-        builder: (contextP, provider, child) {
-          Color accent = provider.accent;
+    Color accent = ref.read(themeProvider.notifier).accent;
 
-          return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              elevation: 0,
-              iconTheme: IconThemeData(color: accent),
-              title: const AppBarText(text: "Portfolio"),
-            ),
-            drawer: const CustomDrawer(),
-            body: Container(
-              padding: EdgeInsets.all(dimensions.height20!),
-              height: double.maxFinite,
-              width: double.maxFinite,
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "My last projects: ",
-                      style: TextStyle(
-                          fontSize: dimensions.height20,
-                          fontWeight: FontWeight.normal,
-                          color: Theme.of(context).textTheme.titleLarge?.color),
-                    ),
-                    SizedBox(
-                      height: dimensions.height30,
-                    ),
-                    Image.asset("assets/images/portfolio/Easy Calculator.webp"),
-                    SizedBox(
-                      height: dimensions.height30,
-                    ),
-                    Image.asset(
-                        "assets/images/portfolio/Compose Calculator.webp"),
-                    SizedBox(
-                      height: dimensions.height30,
-                    ),
-                    Image.asset("assets/images/portfolio/Movies.webp"),
-                  ],
-                ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        elevation: 0,
+        iconTheme: IconThemeData(color: accent),
+        title: const AppBarText(text: "Portfolio"),
+      ),
+      drawer: const CustomDrawer(),
+      body: Container(
+        padding: EdgeInsets.all(dimensions.height20!),
+        height: double.maxFinite,
+        width: double.maxFinite,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "My last projects: ",
+                style: TextStyle(
+                    fontSize: dimensions.height20,
+                    fontWeight: FontWeight.normal,
+                    color: Theme.of(context).textTheme.titleLarge?.color),
               ),
-            ),
-          );
-        },
+              SizedBox(
+                height: dimensions.height30,
+              ),
+              Image.asset("assets/images/portfolio/easy_calculator.webp"),
+              SizedBox(
+                height: dimensions.height30,
+              ),
+              Image.asset("assets/images/portfolio/compose_calculator.webp"),
+              SizedBox(
+                height: dimensions.height30,
+              ),
+              Image.asset("assets/images/portfolio/Movies.webp"),
+            ],
+          ),
+        ),
       ),
     );
   }
