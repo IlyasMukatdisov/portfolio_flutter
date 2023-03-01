@@ -21,18 +21,22 @@ class CustomElevatedButton extends ConsumerWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: accent,
-        padding: EdgeInsets.symmetric(
-            horizontal: dimensions.width20! * 2, vertical: dimensions.width20!),
+        // padding: EdgeInsets.symmetric(
+        //     horizontal: dimensions.width20! * 2, vertical: dimensions.width20!),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(dimensions.height20! * 2),
         ),
       ),
-      child: Text(
-        text,
-        style: TextStyle(
-          fontSize: dimensions.height10! * 1.6,
-          fontWeight: FontWeight.w600,
-          color: Colors.white,
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+            horizontal: dimensions.width20! * 2, vertical: dimensions.width20!),
+        child: Text(
+          text,
+          style: TextStyle(
+            fontSize: dimensions.height10! * 1.6,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
         ),
       ),
     );

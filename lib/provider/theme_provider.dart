@@ -86,6 +86,8 @@ class ThemeNotifier extends Notifier<Map<String, String>> {
 }
 
 class MyTheme {
+  
+
   static final darkTheme = ThemeData(
       fontFamily: 'Poppins',
       scaffoldBackgroundColor: const Color(0xFF121212),

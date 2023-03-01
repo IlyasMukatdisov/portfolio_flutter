@@ -6,7 +6,6 @@ import 'package:portfolio_flutter/utils/constants.dart';
 import 'package:portfolio_flutter/utils/dimensions.dart';
 import 'package:portfolio_flutter/utils/utils.dart';
 import 'package:portfolio_flutter/widgets/app_bar_text.dart';
-import 'package:portfolio_flutter/widgets/custom_drawer.dart';
 
 class SettingsPage extends ConsumerWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -27,12 +26,10 @@ class SettingsPage extends ConsumerWidget {
           iconTheme: IconThemeData(color: accent),
           title: const AppBarText(text: "Settings"),
         ),
-        drawer: const CustomDrawer(),
-        body: Container(
-          height: double.maxFinite,
-          width: double.maxFinite,
-          padding: EdgeInsets.all(dimensions.height20!),
-          child: SingleChildScrollView(
+        body: SingleChildScrollView(
+          child: Container(
+            width: double.maxFinite,
+            padding: EdgeInsets.all(dimensions.height20!),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
