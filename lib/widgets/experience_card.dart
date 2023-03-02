@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio_flutter/provider/theme_provider.dart';
-import 'package:portfolio_flutter/utils/dimensions.dart';
 
 class ExperienceCard extends StatelessWidget {
   const ExperienceCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Dimensions dimensions = Dimensions(context: context);
+    final double width = MediaQuery.of(context).size.width;
+
     return Container(
-      width: dimensions.width! - 2 * dimensions.height20!,
+      width: width - 2 * 20,
       /*padding: EdgeInsets.all(dimensions.height20),*/
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
-        borderRadius: BorderRadius.circular(dimensions.height20!),
+        borderRadius: BorderRadius.circular(20),
         /*boxShadow: [
             BoxShadow(
                 color: const Color(0xFFe8e8e8),
@@ -67,7 +67,6 @@ class ExperienceCardItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Dimensions dimensions = Dimensions(context: context);
     Color accent = ref.read(themeProvider.notifier).accent;
 
     return Row(
@@ -83,8 +82,8 @@ class ExperienceCardItem extends ConsumerWidget {
                     Icons.calendar_month,
                     color: accent,
                   ),
-                  SizedBox(
-                    width: dimensions.width10,
+                  const SizedBox(
+                    width: 10,
                   ),
                   Text(date,
                       style: TextStyle(
@@ -92,22 +91,22 @@ class ExperienceCardItem extends ConsumerWidget {
                           color: Theme.of(context).textTheme.bodyLarge?.color))
                 ],
               ),
-              SizedBox(
-                height: dimensions.height10,
+              const SizedBox(
+                height: 10,
               ),
               Text(profession,
                   style: TextStyle(
                       fontWeight: FontWeight.normal,
                       color: Theme.of(context).textTheme.bodyLarge?.color)),
-              SizedBox(
-                height: dimensions.height10,
+              const SizedBox(
+                height: 10,
               ),
               Text(workPlace,
                   style: TextStyle(
                       fontWeight: FontWeight.normal,
                       color: Theme.of(context).textTheme.bodyLarge?.color)),
-              SizedBox(
-                height: dimensions.height10,
+              const SizedBox(
+                height: 10,
               )
             ],
           ),

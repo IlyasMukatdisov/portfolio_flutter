@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio_flutter/pages/home/home_page.dart';
 import 'package:portfolio_flutter/provider/theme_provider.dart';
-import 'package:portfolio_flutter/utils/app_colors.dart';
 import 'package:portfolio_flutter/utils/constants.dart';
 import 'package:portfolio_flutter/utils/scroll_behavior.dart';
 

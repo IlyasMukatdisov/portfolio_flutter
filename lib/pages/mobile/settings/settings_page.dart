@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio_flutter/provider/theme_provider.dart';
 import 'package:portfolio_flutter/utils/app_colors.dart';
 import 'package:portfolio_flutter/utils/constants.dart';
-import 'package:portfolio_flutter/utils/dimensions.dart';
+
 import 'package:portfolio_flutter/utils/utils.dart';
 import 'package:portfolio_flutter/widgets/app_bar_text.dart';
 
@@ -13,8 +13,6 @@ class SettingsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     Utils.setUiOverlay(context);
-
-    Dimensions dimensions = Dimensions(context: context);
 
     Color accent = ref.watch(themeProvider.notifier).accent;
 
@@ -29,7 +27,7 @@ class SettingsPage extends ConsumerWidget {
         body: SingleChildScrollView(
           child: Container(
             width: double.maxFinite,
-            padding: EdgeInsets.all(dimensions.height20!),
+            padding: const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -73,16 +71,16 @@ class SettingsPage extends ConsumerWidget {
                         }),
                   ],
                 ),
-                SizedBox(
-                  height: dimensions.height20,
+                const SizedBox(
+                  height: 30,
                 ),
                 Wrap(
                   direction: Axis.horizontal,
                   crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
                     const Text("Accent: "),
-                    SizedBox(
-                      width: dimensions.width20,
+                    const SizedBox(
+                      width: 20,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -98,8 +96,8 @@ class SettingsPage extends ConsumerWidget {
                             color: AppColors.red),
                       ),
                     ),
-                    SizedBox(
-                      width: dimensions.width20,
+                    const SizedBox(
+                      width: 20,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -115,8 +113,8 @@ class SettingsPage extends ConsumerWidget {
                             color: AppColors.yellow),
                       ),
                     ),
-                    SizedBox(
-                      width: dimensions.width20,
+                    const SizedBox(
+                      width: 20,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -132,8 +130,8 @@ class SettingsPage extends ConsumerWidget {
                             color: AppColors.green),
                       ),
                     ),
-                    SizedBox(
-                      width: dimensions.width20,
+                    const SizedBox(
+                      width: 20,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -149,8 +147,8 @@ class SettingsPage extends ConsumerWidget {
                             color: AppColors.blue),
                       ),
                     ),
-                    SizedBox(
-                      width: dimensions.width20,
+                    const SizedBox(
+                      width: 20,
                     ),
                     GestureDetector(
                       onTap: () {

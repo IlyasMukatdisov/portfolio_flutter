@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio_flutter/provider/theme_provider.dart';
-import 'package:portfolio_flutter/utils/dimensions.dart';
 
 class SkillItem extends ConsumerWidget {
   final String skillName;
@@ -18,12 +17,11 @@ class SkillItem extends ConsumerWidget {
     var brightness = MediaQuery.of(context).platformBrightness;
     bool isDarkMode = brightness == Brightness.dark;
 
-    Dimensions dimensions = Dimensions(context: context);
-    double width = dimensions.width! - 2 * dimensions.width20!;
+    double width = MediaQuery.of(context).size.width - 40;
     Color accent = ref.read(themeProvider.notifier).accent;
 
     return Container(
-      margin: EdgeInsets.only(bottom: dimensions.height30!),
+      margin: const EdgeInsets.only(bottom: 30),
       width: width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,18 +31,18 @@ class SkillItem extends ConsumerWidget {
             children: [
               Text(skillName,
                   style: TextStyle(
-                      fontSize: dimensions.height10! * 1.7,
+                      fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
                       fontWeight: FontWeight.w600,
                       color: Theme.of(context).textTheme.titleLarge?.color)),
               Text("${skillPercent * 100}%",
                   style: TextStyle(
-                      fontSize: dimensions.height10! * 1.7,
+                      fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
                       fontWeight: FontWeight.normal,
                       color: Theme.of(context).textTheme.bodyLarge?.color)),
             ],
           ),
-          SizedBox(
-            height: dimensions.height10,
+          const SizedBox(
+            height: 10,
           ),
           Container(
             width: width,

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_flutter/utils/dimensions.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio_flutter/provider/theme_provider.dart';
+import 'package:portfolio_flutter/utils/constants.dart';
 
-class AboutPageItem extends StatelessWidget {
+class AboutPageItem extends ConsumerWidget {
   final String header;
   final String value;
 
@@ -12,15 +15,29 @@ class AboutPageItem extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    var brightness = MediaQuery.of(context).platformBrightness;
-    bool isDarkMode = brightness == Brightness.dark;
-
-    Dimensions dimensions = Dimensions(context: context);
+  Widget build(BuildContext context, WidgetRef ref) {
+    String uiMode =
+        ref.read(themeProvider)[Constants.UI_MODE_KEY]!;
+    bool isDarkMode = false;
+    switch (uiMode) {
+      case Constants.UI_MODE_DARK:
+        isDarkMode = true;
+        break;
+      case Constants.UI_MODE_LIGHT:
+        isDarkMode = false;
+        break;
+      case Constants.UI_MODE_SYSTEM:
+        {
+          var brightness =
+              SchedulerBinding.instance.platformDispatcher.platformBrightness;
+          isDarkMode = brightness == Brightness.dark;
+        }
+        break;
+    }
 
     return Container(
       width: double.maxFinite,
-      padding: EdgeInsets.symmetric(vertical: dimensions.height10!),
+      padding: const EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
           border: Border(
               bottom: BorderSide(
@@ -33,7 +50,7 @@ class AboutPageItem extends StatelessWidget {
         children: [
           Text(header,
               style: TextStyle(
-                  fontSize: dimensions.height10! * 1.7,
+                  fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
                   fontWeight: FontWeight.w600,
                   color: Theme.of(context).textTheme.headlineSmall?.color)),
           Text(value,

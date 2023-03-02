@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_flutter/utils/dimensions.dart';
 
 class ContactItem extends StatelessWidget {
   final IconData icon;
@@ -17,27 +16,25 @@ class ContactItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Dimensions dimensions = Dimensions(context: context);
-
     return Column(
       children: [
         Icon(
           icon,
-          size: dimensions.height20! * 2,
+          size: 40,
           color: iconColor,
         ),
-        SizedBox(
-          height: dimensions.height10,
+        const SizedBox(
+          height: 10,
         ),
         Text(
           header,
           style: TextStyle(
-              fontSize: dimensions.height10! * 1.6,
+              fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
               fontWeight: FontWeight.w600,
               color: Theme.of(context).textTheme.titleMedium?.color),
         ),
-        SizedBox(
-          height: dimensions.height10,
+        const SizedBox(
+          height: 10,
         ),
         Text(
           value,

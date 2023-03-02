@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:portfolio_flutter/utils/constants.dart';
-import 'package:portfolio_flutter/utils/dimensions.dart';
+
 import 'package:portfolio_flutter/utils/utils.dart';
 import 'package:portfolio_flutter/widgets/contact_item.dart';
 import 'package:portfolio_flutter/widgets/custom_elevated_button.dart';
@@ -13,11 +13,9 @@ import 'package:portfolio_flutter/widgets/custom_elevated_button.dart';
 class MobileContactPage extends ConsumerStatefulWidget {
   const MobileContactPage({
     Key? key,
-    required this.dimensions,
     required this.accent,
   }) : super(key: key);
 
-  final Dimensions dimensions;
   final Color accent;
 
   @override
@@ -55,80 +53,81 @@ class _ContactPageState extends ConsumerState<MobileContactPage> {
 
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.all(widget.dimensions.height20!),
+        padding: const EdgeInsets.all(20),
         child: Column(
           children: [
             Text(
               "Have you any questions?",
               style: TextStyle(
-                  fontSize: widget.dimensions.height20,
+                  fontSize: Theme.of(context).textTheme.headlineSmall?.fontSize,
                   fontWeight: FontWeight.w600,
                   color: widget.accent),
             ),
-            SizedBox(
-              height: widget.dimensions.height20,
+            const SizedBox(
+              height: 20,
             ),
             Text(
               "I'M AT YOUR SERVICES",
               style: GoogleFonts.poppins(
-                  fontSize: widget.dimensions.height10! * 1.5,
+                  fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
                   fontWeight: FontWeight.w600,
                   color: Theme.of(context).textTheme.titleMedium?.color),
             ),
-            SizedBox(
-              height: widget.dimensions.height30,
+            const SizedBox(
+              height: 30,
             ),
             ContactItem(
                 icon: Icons.phone,
                 iconColor: widget.accent,
                 header: "Call Me On",
                 value: "+998946235947"),
-            SizedBox(
-              height: widget.dimensions.height30,
+            const SizedBox(
+              height: 30,
             ),
             ContactItem(
                 icon: Icons.telegram,
                 iconColor: widget.accent,
                 header: "Write Me On Telegram",
                 value: "https://t.me/MainActivityDotKt"),
-            SizedBox(
-              height: widget.dimensions.height30,
+            const SizedBox(
+              height: 30,
             ),
             ContactItem(
                 icon: Icons.mail,
                 iconColor: widget.accent,
                 header: "Write Me On E-Mail",
                 value: "mukatdisovilyas@gmail.com"),
-            SizedBox(
-              height: widget.dimensions.height30,
+            const SizedBox(
+              height: 30,
             ),
             ContactItem(
                 icon: Icons.pending_rounded,
                 iconColor: widget.accent,
                 header: "Check My Projects",
                 value: "https://github.com/IlyasMukatdisov"),
-            SizedBox(
-              height: widget.dimensions.height30,
+            const SizedBox(
+              height: 30,
             ),
             Text(
               "Send me an Email",
               style: GoogleFonts.poppins(
-                  fontSize: widget.dimensions.height20,
+                  fontSize: Theme.of(context).textTheme.headlineSmall?.fontSize,
                   fontWeight: FontWeight.w600,
                   color: widget.accent),
             ),
-            SizedBox(
-              height: widget.dimensions.height20,
+            const SizedBox(
+              height: 20,
             ),
             Text(
               "I'LL TRY TO RESPOND AS FAST AS POSSIBLE",
+              textAlign: TextAlign.center,
               style: GoogleFonts.poppins(
-                  fontSize: widget.dimensions.height10! * 1.5,
+                  fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
                   fontWeight: FontWeight.w600,
                   color: Theme.of(context).textTheme.titleMedium?.color),
             ),
-            SizedBox(
-              height: widget.dimensions.height20,
+            const SizedBox(
+              height: 20,
             ),
             TextField(
               controller: controllerSubject,
@@ -136,18 +135,16 @@ class _ContactPageState extends ConsumerState<MobileContactPage> {
                 hintText: 'Subject',
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: widget.accent, width: 1),
-                  borderRadius:
-                      BorderRadius.circular(widget.dimensions.height20!),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: widget.accent, width: 1),
-                  borderRadius:
-                      BorderRadius.circular(widget.dimensions.height20!),
+                  borderRadius: BorderRadius.circular(20),
                 ),
               ),
             ),
-            SizedBox(
-              height: widget.dimensions.height20,
+            const SizedBox(
+              height: 20,
             ),
             TextField(
               controller: controllerMessage,
@@ -156,24 +153,23 @@ class _ContactPageState extends ConsumerState<MobileContactPage> {
               decoration: InputDecoration(
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: widget.accent, width: 1),
-                  borderRadius:
-                      BorderRadius.circular(widget.dimensions.height20!),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 hintText: 'Message',
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: widget.accent, width: 1),
-                  borderRadius:
-                      BorderRadius.circular(widget.dimensions.height20!),
+                  borderRadius: BorderRadius.circular(20),
                 ),
               ),
             ),
-            SizedBox(
-              height: widget.dimensions.height20,
+            const SizedBox(
+              height: 20,
             ),
             Container(
               width: double.maxFinite,
               alignment: Alignment.centerLeft,
               child: CustomElevatedButton(
+                  accent: widget.accent,
                   onPressed: () async {
                     launchEmail(
                         toEmail: Constants.EMAIL,
