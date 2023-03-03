@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portfolio_flutter/pages/desktop/about/about_page.dart';
+import 'package:portfolio_flutter/pages/desktop/about/desktop_about_page.dart';
+import 'package:portfolio_flutter/pages/desktop/contact/contact_page.dart';
+import 'package:portfolio_flutter/pages/desktop/portfolio/portfolio_page_desktop.dart';
+import 'package:portfolio_flutter/pages/desktop/services/services_desktop_page.dart';
+import 'package:portfolio_flutter/pages/mobile/settings/settings_page.dart';
 import 'package:portfolio_flutter/provider/page_provider.dart';
 import 'package:portfolio_flutter/utils/constants.dart';
 import 'package:portfolio_flutter/widgets/custom_elevated_button.dart';
@@ -42,20 +46,25 @@ class HomeScreenDesktop extends ConsumerWidget {
     final List<Widget> pages = [
       DesktopHomeScreenContent(accent: accent),
       DesktopAboutPage(accent: accent),
-      const Center(
-        child: Text('3'),
-      ),
-      const Center(
-        child: Text('4'),
-      ),
-      const Center(
-        child: Text('5'),
-      ),
+      DesktopServicesPage(accent: accent),
+      DesktopPortfolioPage(accent: accent),
+      DesktopContactPage(accent: accent),
     ];
 
     final int selectedIndex = ref.watch(pageIndexProvider.notifier).state;
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.settings),
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const SettingsPage(),
+              ));
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
       body: Row(
         children: [
           SingleChildScrollView(
@@ -64,6 +73,7 @@ class HomeScreenDesktop extends ConsumerWidget {
                   BoxConstraints(minHeight: MediaQuery.of(context).size.height),
               child: IntrinsicHeight(
                 child: NavigationRail(
+                  groupAlignment: 0.0,
                   selectedLabelTextStyle: TextStyle(color: accent),
                   selectedIconTheme: IconThemeData(color: accent),
                   labelType: NavigationRailLabelType.selected,

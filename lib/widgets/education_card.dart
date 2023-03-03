@@ -7,49 +7,26 @@ class EducationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width;
-
-    return Container(
-      width: width - 2 * 20,
-      /*padding: EdgeInsets.all(dimensions.height20),*/
-      decoration: BoxDecoration(
-        color: Theme.of(context).scaffoldBackgroundColor,
-        borderRadius: BorderRadius.circular(20),
-        /*boxShadow: [
-            BoxShadow(
-                color: const Color(0xFFe8e8e8),
-                blurRadius: Dimensions.height10 / 2,
-                offset: Offset(0, Dimensions.height10 / 2)),
-            BoxShadow(
-                color: const Color(0xFFe8e8e8),
-                blurRadius: Dimensions.height10 / 2,
-                offset: Offset(Dimensions.height10 / 2, 0)),
-            BoxShadow(
-                color: const Color(0xFFe8e8e8),
-                blurRadius: Dimensions.height10 / 2,
-                offset: Offset(0, -Dimensions.height10 / 2)),
-            BoxShadow(
-                color: const Color(0xFFe8e8e8),
-                blurRadius: Dimensions.height10 / 2,
-                offset: Offset(-Dimensions.height10 / 2, 0)),
-
-          ]*/
-      ),
-      child: Column(
-        children: const [
-          EducationCardItem(
-            date: "2016-2019",
-            direction: "Software Engineering Direction",
-            educationalInstitution:
-                "Tashkent Professional Collage of Information Technologies",
-          ),
-          EducationCardItem(
-            date: "2019-2022",
-            direction: "Computer Engineering Direction",
-            educationalInstitution:
-                "Tashkent University of Information Technologies named after Muhammad al-Khwarizmi",
-          ),
-        ],
+    return Card(
+      elevation: 5,
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          children: const [
+            EducationCardItem(
+              date: "2016-2019",
+              direction: "Software Engineering Direction",
+              educationalInstitution:
+                  "Tashkent Professional Collage of Information Technologies",
+            ),
+            EducationCardItem(
+              date: "2019-2022",
+              direction: "Computer Engineering Direction",
+              educationalInstitution:
+                  "Tashkent University of Information Technologies named after Muhammad al-Khwarizmi",
+            ),
+          ],
+        ),
       ),
     );
   }

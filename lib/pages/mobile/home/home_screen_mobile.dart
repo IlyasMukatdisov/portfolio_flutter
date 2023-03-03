@@ -84,7 +84,7 @@ class HomeScreenMobile extends ConsumerWidget {
         currentIndex: selectedIndex,
         items: _navItems,
       ),
-      body: screens[selectedIndex],
+      body: SafeArea(child: screens[selectedIndex]),
     );
   }
 }

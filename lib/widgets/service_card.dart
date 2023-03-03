@@ -6,19 +6,21 @@ class ServiceCard extends StatelessWidget {
   final Color iconColor;
   final String header;
   final String description;
+  final double width;
 
-  const ServiceCard(
-      {Key? key,
-      required this.icon,
-      required this.header,
-      required this.description,
-      required this.iconColor})
-      : super(key: key);
+  const ServiceCard({
+    Key? key,
+    required this.icon,
+    required this.header,
+    required this.description,
+    required this.iconColor,
+    required this.width,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.maxFinite,
+      width: width,
       height: 200,
       decoration: BoxDecoration(
           border: Border.all(

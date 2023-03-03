@@ -7,10 +7,6 @@ import 'package:portfolio_flutter/pages/desktop/about/widget/skills_section.dart
 import 'package:portfolio_flutter/utils/constants.dart';
 
 import 'package:portfolio_flutter/utils/utils.dart';
-import 'package:portfolio_flutter/widgets/about_page_item.dart';
-import 'package:portfolio_flutter/widgets/education_card.dart';
-import 'package:portfolio_flutter/widgets/experience_card.dart';
-import 'package:portfolio_flutter/widgets/skill_item.dart';
 
 class DesktopAboutPage extends StatelessWidget {
   const DesktopAboutPage({
@@ -25,9 +21,10 @@ class DesktopAboutPage extends StatelessWidget {
     Utils.setUiOverlay(context);
 
     return SingleChildScrollView(
-      child: Padding(
+      child: Container(
         padding: const EdgeInsets.all(20),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             RichText(
@@ -55,7 +52,8 @@ class DesktopAboutPage extends StatelessWidget {
             ),
             Text(
               Constants.aboutMeDescription,
-              style: const TextStyle(
+              style: TextStyle(
+                fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
                 fontWeight: FontWeight.normal,
                 height: 1.5,
               ),
@@ -70,7 +68,7 @@ class DesktopAboutPage extends StatelessWidget {
                   child: AboutMeSection(),
                 ),
                 const SizedBox(
-                  width: 10,
+                  width: 20,
                 ),
                 Flexible(
                   child: SkillsSection(accent: accent),
@@ -98,6 +96,7 @@ class DesktopAboutPage extends StatelessWidget {
               height: 20,
             ),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
                 Flexible(
                   child: EducationSection(),

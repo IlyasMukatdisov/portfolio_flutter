@@ -30,5 +30,5 @@ class Constants {
       "https://portfoliohosting-ad525.web.app/asset/files/Ilyas_Mukatdisov.pdf";
   static const String EMAIL = "mukatdisovilyas@gmail.com";
 
-  static const double DESKTOP_WIDTH = 700;
+  static const double DESKTOP_WIDTH = 750;
 }

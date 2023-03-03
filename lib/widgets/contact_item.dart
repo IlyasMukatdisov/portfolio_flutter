@@ -16,33 +16,37 @@ class ContactItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Icon(
-          icon,
-          size: 40,
-          color: iconColor,
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Text(
-          header,
-          style: TextStyle(
-              fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
-              fontWeight: FontWeight.w600,
-              color: Theme.of(context).textTheme.titleMedium?.color),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Text(
-          value,
-          style: TextStyle(
-              fontWeight: FontWeight.normal,
-              color: Theme.of(context).textTheme.bodyLarge?.color),
-        ),
-      ],
+    return Container(
+      width: 300,
+      padding: const EdgeInsets.all(15),
+      child: Column(
+        children: [
+          Icon(
+            icon,
+            size: 40,
+            color: iconColor,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            header,
+            style: TextStyle(
+                fontSize: Theme.of(context).textTheme.titleLarge?.fontSize,
+                fontWeight: FontWeight.w600,
+                color: Theme.of(context).textTheme.titleMedium?.color),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            value,
+            style: TextStyle(
+                fontWeight: FontWeight.normal,
+                color: Theme.of(context).textTheme.bodyLarge?.color),
+          ),
+        ],
+      ),
     );
   }
 }

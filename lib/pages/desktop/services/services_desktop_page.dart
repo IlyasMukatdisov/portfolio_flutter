@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_flutter/utils/utils.dart';
 import 'package:portfolio_flutter/widgets/service_card.dart';
 
-class MobileServicesPage extends StatelessWidget {
-  const MobileServicesPage({
+class DesktopServicesPage extends StatelessWidget {
+  const DesktopServicesPage({
     Key? key,
     required this.accent,
   }) : super(key: key);
@@ -19,32 +19,39 @@ class MobileServicesPage extends StatelessWidget {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(20),
-        child: Column(
+        child: Wrap(
+          alignment: WrapAlignment.center,
           children: [
-            ServiceCard(
-                width: double.maxFinite,
+            Padding(
+              padding: const EdgeInsets.all(15),
+              child: ServiceCard(
                 icon: Icons.phone_android,
                 header: "Android Native App",
                 description: "Create Android Native Apps",
-                iconColor: accent),
-            const SizedBox(
-              height: 30,
+                iconColor: accent,
+                width: 400,
+              ),
             ),
-            ServiceCard(
-                width: double.maxFinite,
+            Padding(
+              padding: const EdgeInsets.all(15),
+              child: ServiceCard(
+                width: 400,
                 icon: Icons.laptop,
                 header: "Flutter App",
                 description: "Create Flutter Apps",
-                iconColor: accent),
-            const SizedBox(
-              height: 30,
+                iconColor: accent,
+              ),
             ),
-            ServiceCard(
-                width: double.maxFinite,
+            Padding(
+              padding: const EdgeInsets.all(15),
+              child: ServiceCard(
+                width: 400,
                 icon: Icons.web_asset,
                 header: "Simple Website",
                 description: "Create Simple Website",
-                iconColor: accent),
+                iconColor: accent,
+              ),
+            ),
           ],
         ),
       ),

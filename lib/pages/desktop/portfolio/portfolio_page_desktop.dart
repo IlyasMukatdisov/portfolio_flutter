@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio_flutter/utils/utils.dart';
 import 'package:portfolio_flutter/widgets/portfolio_item.dart';
 
-class MobilePortfolioPage extends ConsumerWidget {
-  const MobilePortfolioPage({
+class DesktopPortfolioPage extends ConsumerWidget {
+  const DesktopPortfolioPage({
     Key? key,
     required this.accent,
   }) : super(key: key);
@@ -17,14 +17,13 @@ class MobilePortfolioPage extends ConsumerWidget {
     Utils.setUiOverlay(context);
 
     return SingleChildScrollView(
-      child: Container(
-        width: double.maxFinite,
+      child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "My last projects: ",
+              "My Projects: ",
               style: TextStyle(
                   fontSize: Theme.of(context).textTheme.headlineSmall?.fontSize,
                   fontWeight: FontWeight.w600,
@@ -35,18 +34,18 @@ class MobilePortfolioPage extends ConsumerWidget {
               children: const [
                 PortfolioItem(
                   imagePath: "assets/images/portfolio/educode.webp",
-                  name: 'Easy calculator',
-                  url: 'https://github.com/IlyasMukatdisov/EasyCalculator',
+                  name: 'EduCode',
+                  url: 'https://github.com/IlyasMukatdisov/educode',
                 ),
                 PortfolioItem(
                   imagePath: "assets/images/portfolio/mychat.webp",
-                  name: 'Compose Calculator',
-                  url: 'https://github.com/IlyasMukatdisov/EasyCalculator',
+                  name: 'My Chat',
+                  url: 'https://github.com/IlyasMukatdisov/mychat',
                 ),
                 PortfolioItem(
                   imagePath: "assets/images/portfolio/portfolio.webp",
-                  name: 'Movie',
-                  url: 'https://github.com/IlyasMukatdisov/EasyCalculator',
+                  name: 'Portfolio',
+                  url: 'https://github.com/IlyasMukatdisov/portfolio_flutter',
                 ),
               ],
             ),
