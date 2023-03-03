@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio_flutter/pages/desktop/about/about_page.dart';
 import 'package:portfolio_flutter/provider/page_provider.dart';
 import 'package:portfolio_flutter/utils/constants.dart';
 import 'package:portfolio_flutter/widgets/custom_elevated_button.dart';
@@ -40,9 +41,7 @@ class HomeScreenDesktop extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final List<Widget> pages = [
       DesktopHomeScreenContent(accent: accent),
-      const Center(
-        child: Text('2'),
-      ),
+      DesktopAboutPage(accent: accent),
       const Center(
         child: Text('3'),
       ),

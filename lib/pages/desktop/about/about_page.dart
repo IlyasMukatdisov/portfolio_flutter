@@ -1,5 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:portfolio_flutter/pages/desktop/about/widget/about_me_section.dart';
+import 'package:portfolio_flutter/pages/desktop/about/widget/education_section.dart';
+import 'package:portfolio_flutter/pages/desktop/about/widget/experience_section.dart';
+import 'package:portfolio_flutter/pages/desktop/about/widget/skills_section.dart';
 import 'package:portfolio_flutter/utils/constants.dart';
 
 import 'package:portfolio_flutter/utils/utils.dart';
@@ -8,8 +12,8 @@ import 'package:portfolio_flutter/widgets/education_card.dart';
 import 'package:portfolio_flutter/widgets/experience_card.dart';
 import 'package:portfolio_flutter/widgets/skill_item.dart';
 
-class MobileAboutPage extends StatelessWidget {
-  const MobileAboutPage({
+class DesktopAboutPage extends StatelessWidget {
+  const DesktopAboutPage({
     Key? key,
     required this.accent,
   }) : super(key: key);
@@ -59,19 +63,20 @@ class MobileAboutPage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            const AboutPageItem(header: "Birthday :", value: "18 Jan 2001"),
-            const AboutPageItem(header: "Age :", value: "21"),
-            const AboutPageItem(
-                header: "Website :", value: "portfoliohosting-ad525.web.app"),
-            const AboutPageItem(
-                header: "Email :", value: "mukatdisovilyas@gmail.com"),
-            const AboutPageItem(
-                header: "Degree :", value: "Bachelor's 3 stage"),
-            const AboutPageItem(header: "Phone :", value: "+998946235947"),
-            const AboutPageItem(
-                header: "City :", value: "Tashkent, Uzbekistan"),
-            const AboutPageItem(
-                header: "Telegram :", value: "@MainActivityDotKt"),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Flexible(
+                  child: AboutMeSection(),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Flexible(
+                  child: SkillsSection(accent: accent),
+                ),
+              ],
+            ),
             const SizedBox(
               height: 15,
             ),
@@ -89,64 +94,22 @@ class MobileAboutPage extends StatelessWidget {
             //     },
             //     text: "Hire Me"),
 
-            Text(
-              "Skills :",
-              style: TextStyle(
-                fontSize: Theme.of(context).textTheme.headlineSmall?.fontSize,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
             const SizedBox(
               height: 20,
             ),
-            SkillItem(
-                skillName: "Flutter",
-                skillPercent: 0.25,
-                columnCount: 1,
-                accent: accent),
-            SkillItem(
-              skillName: "Dart",
-              skillPercent: 0.75,
-              columnCount: 1,
-              accent: accent,
+            Row(
+              children: const [
+                Flexible(
+                  child: EducationSection(),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Flexible(
+                  child: ExperienceSection(),
+                ),
+              ],
             ),
-            SkillItem(
-              skillName: "Kotlin",
-              skillPercent: 0.8,
-              columnCount: 1,
-              accent: accent,
-            ),
-            SkillItem(
-              skillName: "Jetpack Compose",
-              skillPercent: 0.2,
-              columnCount: 1,
-              accent: accent,
-            ),
-            Text(
-              "Education :",
-              style: TextStyle(
-                  fontSize: Theme.of(context).textTheme.headlineSmall?.fontSize,
-                  color: Theme.of(context).textTheme.titleLarge?.color,
-                  fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const EducationCard(),
-            const SizedBox(
-              height: 20,
-            ),
-            Text(
-              "Experience :",
-              style: TextStyle(
-                  fontSize: Theme.of(context).textTheme.headlineSmall?.fontSize,
-                  color: Theme.of(context).textTheme.titleLarge?.color,
-                  fontWeight: FontWeight.w600),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const ExperienceCard(),
           ],
         ),
       ),

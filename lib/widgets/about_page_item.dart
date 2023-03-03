@@ -16,8 +16,7 @@ class AboutPageItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    String uiMode =
-        ref.read(themeProvider)[Constants.UI_MODE_KEY]!;
+    String uiMode = ref.read(themeProvider)[Constants.UI_MODE_KEY]!;
     bool isDarkMode = false;
     switch (uiMode) {
       case Constants.UI_MODE_DARK:
@@ -37,7 +36,6 @@ class AboutPageItem extends ConsumerWidget {
 
     return Container(
       width: double.maxFinite,
-      padding: const EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
           border: Border(
               bottom: BorderSide(
@@ -45,8 +43,8 @@ class AboutPageItem extends ConsumerWidget {
                       ? Colors.white.withOpacity(0.5)
                       : Colors.black.withOpacity(0.2),
                   width: 2))),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Text(header,
               style: TextStyle(
@@ -55,6 +53,7 @@ class AboutPageItem extends ConsumerWidget {
                   color: Theme.of(context).textTheme.headlineSmall?.color)),
           Text(value,
               style: TextStyle(
+                  fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
                   fontWeight: FontWeight.normal,
                   color: Theme.of(context).textTheme.bodyLarge?.color)),
         ],
