@@ -10,7 +10,7 @@ import 'package:portfolio_flutter/utils/utils.dart';
 import 'package:portfolio_flutter/widgets/contact_item.dart';
 import 'package:portfolio_flutter/widgets/custom_elevated_button.dart';
 
-class MobileContactPage extends ConsumerStatefulWidget {
+class MobileContactPage extends StatefulWidget {
   const MobileContactPage({
     Key? key,
     required this.accent,
@@ -19,10 +19,10 @@ class MobileContactPage extends ConsumerStatefulWidget {
   final Color accent;
 
   @override
-  ConsumerState<MobileContactPage> createState() => _ContactPageState();
+  State<MobileContactPage> createState() => _ContactPageState();
 }
 
-class _ContactPageState extends ConsumerState<MobileContactPage> {
+class _ContactPageState extends State<MobileContactPage> {
   final controllerSubject = TextEditingController();
 
   final controllerMessage = TextEditingController();

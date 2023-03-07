@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:portfolio_flutter/utils/utils.dart';
 import 'package:portfolio_flutter/widgets/portfolio_item.dart';
 
-class MobilePortfolioPage extends ConsumerWidget {
+class MobilePortfolioPage extends StatelessWidget {
   const MobilePortfolioPage({
     Key? key,
     required this.accent,
@@ -13,7 +11,7 @@ class MobilePortfolioPage extends ConsumerWidget {
   final Color accent;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     Utils.setUiOverlay(context);
 
     return SingleChildScrollView(
@@ -36,17 +34,17 @@ class MobilePortfolioPage extends ConsumerWidget {
                 PortfolioItem(
                   imagePath: "assets/images/portfolio/educode.webp",
                   name: 'Easy calculator',
-                  url: 'https://github.com/IlyasMukatdisov/EasyCalculator',
+                  url: 'https://github.com/IlyasMukatdisov/educode',
                 ),
                 PortfolioItem(
                   imagePath: "assets/images/portfolio/mychat.webp",
-                  name: 'Compose Calculator',
-                  url: 'https://github.com/IlyasMukatdisov/EasyCalculator',
+                  name: 'My Chat',
+                  url: 'https://github.com/IlyasMukatdisov/my_chat',
                 ),
                 PortfolioItem(
                   imagePath: "assets/images/portfolio/portfolio.webp",
-                  name: 'Movie',
-                  url: 'https://github.com/IlyasMukatdisov/EasyCalculator',
+                  name: 'Portfolio',
+                  url: 'https://github.com/IlyasMukatdisov/portfolio_flutter',
                 ),
               ],
             ),

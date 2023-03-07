@@ -87,7 +87,20 @@ class HomeScreenDesktop extends ConsumerWidget {
             ),
           ),
           Expanded(
-            child: pages[selectedIndex],
+            child: SingleChildScrollView(
+              child: Container(
+                alignment: Alignment.center,
+                child: Flexible(
+                  child: Container(
+                    padding: const EdgeInsets.all(20),
+                    constraints: const BoxConstraints(
+                      maxWidth: 1200,
+                    ),
+                    child: pages[selectedIndex],
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),
@@ -105,102 +118,95 @@ class DesktopHomeScreenContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        padding: const EdgeInsets.all(20),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  RichText(
-                    text: TextSpan(
-                        text: Constants.hello,
-                        style: TextStyle(
-                            fontSize: Theme.of(context)
-                                .textTheme
-                                .headlineLarge
-                                ?.fontSize,
-                            fontWeight: FontWeight.w600,
-                            color:
-                                Theme.of(context).textTheme.titleSmall?.color),
-                        children: [
-                          TextSpan(
-                              text: Constants.name,
-                              style: TextStyle(
-                                  fontFamily: 'ClickerScript',
-                                  fontSize: Theme.of(context)
-                                      .textTheme
-                                      .headlineLarge
-                                      ?.fontSize,
-                                  color: accent))
-                        ]),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  RichText(
-                    text: TextSpan(
-                        text: Constants.im,
-                        style: TextStyle(
-                            fontSize: Theme.of(context)
-                                .textTheme
-                                .headlineSmall
-                                ?.fontSize,
-                            fontWeight: FontWeight.w600,
-                            color:
-                                Theme.of(context).textTheme.titleLarge?.color),
-                        children: [
-                          TextSpan(
-                              text: Constants.job,
-                              style: TextStyle(
-                                  fontSize: Theme.of(context)
-                                      .textTheme
-                                      .headlineSmall
-                                      ?.fontSize,
-                                  fontWeight: FontWeight.w600,
-                                  color: accent))
-                        ]),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    Constants.jobDescription,
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              RichText(
+                text: TextSpan(
+                    text: Constants.hello,
                     style: TextStyle(
-                        fontSize:
-                            Theme.of(context).textTheme.titleLarge?.fontSize,
-                        fontWeight: FontWeight.normal,
-                        height: 1.5),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Link(
-                    target: LinkTarget.blank,
-                    uri: Uri.parse(Constants.CV_URL),
-                    builder: (context, followLink) => CustomElevatedButton(
-                      text: Constants.downloadCv,
-                      onPressed: followLink!,
-                      accent: accent,
-                    ),
-                  ),
-                ],
+                        fontSize: Theme.of(context)
+                            .textTheme
+                            .headlineLarge
+                            ?.fontSize,
+                        fontWeight: FontWeight.w600,
+                        color: Theme.of(context).textTheme.titleSmall?.color),
+                    children: [
+                      TextSpan(
+                          text: Constants.name,
+                          style: TextStyle(
+                              fontFamily: 'ClickerScript',
+                              fontSize: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge
+                                  ?.fontSize,
+                              color: accent))
+                    ]),
               ),
-            ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                "assets/images/photo.webp",
-                width: 300,
+              const SizedBox(
+                height: 20,
               ),
-            ),
-          ],
+              RichText(
+                text: TextSpan(
+                    text: Constants.im,
+                    style: TextStyle(
+                        fontSize: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.fontSize,
+                        fontWeight: FontWeight.w600,
+                        color: Theme.of(context).textTheme.titleLarge?.color),
+                    children: [
+                      TextSpan(
+                          text: Constants.job,
+                          style: TextStyle(
+                              fontSize: Theme.of(context)
+                                  .textTheme
+                                  .headlineSmall
+                                  ?.fontSize,
+                              fontWeight: FontWeight.w600,
+                              color: accent))
+                    ]),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Text(
+                Constants.jobDescription,
+                style: TextStyle(
+                    fontSize:
+                        Theme.of(context).textTheme.titleLarge?.fontSize,
+                    fontWeight: FontWeight.normal,
+                    height: 1.5),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Link(
+                target: LinkTarget.blank,
+                uri: Uri.parse(Constants.CV_URL),
+                builder: (context, followLink) => CustomElevatedButton(
+                  text: Constants.downloadCv,
+                  onPressed: followLink!,
+                  accent: accent,
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Image.asset(
+            "assets/images/photo.webp",
+            width: 300,
+          ),
+        ),
+      ],
     );
   }
 }

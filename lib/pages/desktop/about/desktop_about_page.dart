@@ -20,98 +20,93 @@ class DesktopAboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Utils.setUiOverlay(context);
 
-    return SingleChildScrollView(
-      child: Container(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        RichText(
+          text: TextSpan(
+              text: "${Constants.im}${Constants.name} and ",
+              style: TextStyle(
+                  fontSize:
+                      Theme.of(context).textTheme.headlineSmall?.fontSize,
+                  fontWeight: FontWeight.w600,
+                  color: Theme.of(context).textTheme.titleLarge?.color),
+              children: [
+                TextSpan(
+                    text: Constants.job,
+                    style: TextStyle(
+                        fontSize: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.fontSize,
+                        fontWeight: FontWeight.w600,
+                        color: accent))
+              ]),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Text(
+          Constants.aboutMeDescription,
+          style: TextStyle(
+            fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
+            fontWeight: FontWeight.normal,
+            height: 1.5,
+          ),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RichText(
-              text: TextSpan(
-                  text: "${Constants.im}${Constants.name} and ",
-                  style: TextStyle(
-                      fontSize:
-                          Theme.of(context).textTheme.headlineSmall?.fontSize,
-                      fontWeight: FontWeight.w600,
-                      color: Theme.of(context).textTheme.titleLarge?.color),
-                  children: [
-                    TextSpan(
-                        text: Constants.job,
-                        style: TextStyle(
-                            fontSize: Theme.of(context)
-                                .textTheme
-                                .headlineSmall
-                                ?.fontSize,
-                            fontWeight: FontWeight.w600,
-                            color: accent))
-                  ]),
+            const Flexible(
+              child: AboutMeSection(),
             ),
             const SizedBox(
-              height: 10,
+              width: 20,
             ),
-            Text(
-              Constants.aboutMeDescription,
-              style: TextStyle(
-                fontSize: Theme.of(context).textTheme.titleMedium?.fontSize,
-                fontWeight: FontWeight.normal,
-                height: 1.5,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Flexible(
-                  child: AboutMeSection(),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Flexible(
-                  child: SkillsSection(accent: accent),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            // CustomElevatedButton(
-            //     onPressed: () async {
-            //       Navigator.pushReplacement(
-            //         context,
-            //         MaterialPageRoute(
-            //           builder: (context) => MobileContactPage(
-            //             accent: accent,
-            //             dimensions: dimensions,
-            //           ),
-            //         ),
-            //       );
-            //     },
-            //     text: "Hire Me"),
-
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Flexible(
-                  child: EducationSection(),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Flexible(
-                  child: ExperienceSection(),
-                ),
-              ],
+            Flexible(
+              child: SkillsSection(accent: accent),
             ),
           ],
         ),
-      ),
+        const SizedBox(
+          height: 15,
+        ),
+        // CustomElevatedButton(
+        //     onPressed: () async {
+        //       Navigator.pushReplacement(
+        //         context,
+        //         MaterialPageRoute(
+        //           builder: (context) => MobileContactPage(
+        //             accent: accent,
+        //             dimensions: dimensions,
+        //           ),
+        //         ),
+        //       );
+        //     },
+        //     text: "Hire Me"),
+
+        const SizedBox(
+          height: 20,
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            Flexible(
+              child: EducationSection(),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Flexible(
+              child: ExperienceSection(),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
